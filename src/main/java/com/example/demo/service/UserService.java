@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -21,11 +23,20 @@ public class UserService {
     public User save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEmail("admin@gmail.com");
+        userRepository.save(user);
         return userRepository.save(user);
     }
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
 }
