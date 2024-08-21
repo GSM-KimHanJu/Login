@@ -1,13 +1,16 @@
 package com.example.demo.contoller;
 
 
-import ch.qos.logback.core.model.Model;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import java.security.Principal;
+
+
 
 import java.security.Principal;
 
@@ -37,7 +40,7 @@ public class AuthController {
 
     @PostMapping("/logout")
     public String logout() {
-        return "logout";
+        return "redirect:/profile";
     }
 
     @DeleteMapping("/delete/{id}")
