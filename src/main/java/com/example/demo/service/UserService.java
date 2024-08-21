@@ -16,7 +16,7 @@ public class UserService {
     private UserRepository userRepository;
 
     // BCrypt: 비밀번호와 같은 중요 정보들을 안전하게 해싱시키는 해싱 함수
-    //해싱: 특정 데이터를 해싱화하여 보안이 강력하게 만들어 줌.
+    // 해싱: 특정 데이터를 해싱화하여 보안이 강력하게 만들어 줌.
     // 허나 비밀번호를 잃어버렸을 시 복구가 불가 -> 새로운 비밀번호로 재설정하여 해결
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 

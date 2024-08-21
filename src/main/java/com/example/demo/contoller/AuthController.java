@@ -1,12 +1,15 @@
 package com.example.demo.contoller;
 
 
+import ch.qos.logback.core.model.Model;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 public class AuthController {
@@ -54,6 +57,13 @@ public class AuthController {
         userService.save(existingUser);
 
         return "redirect:/login";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model, Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+        return "profile";
     }
 
 }
