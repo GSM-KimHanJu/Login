@@ -5,6 +5,7 @@ import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -18,8 +19,10 @@ import java.security.Principal;
 public class AuthController {
 
     @Autowired
+    @Lazy
     private UserService userService;
     @Autowired
+    @Lazy
     private UserRepository userRepository;
 
     @GetMapping("/join")
